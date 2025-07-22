@@ -1,12 +1,4 @@
 
-'''
-The MyCanny implmentation uses a complex Scharr operator, and thus returns a complex 2dArray
-aka, it does not return an array that can be shown as an image
-using the np.angle function turns the complex array into a real one but it looks like either 
-something is happening to the original img (not the file but the variable) or the angle are 
-exploding and the grayscalling has a relative implementation and is exploding because of it
-'''
-
 # LineAnalyzer
 I am learning to draw, end goal of this project is to have rigours measures of my progress. We'll see.
 
