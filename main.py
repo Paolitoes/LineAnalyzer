@@ -9,14 +9,8 @@ if img is None:
     sys.exit("Could not read the image.")
 
 #dst = cv.addWeighted(img,0.7,img,0.3,0)
-'''
-The MyCanny implmentation uses a complex Scharr operator, and thus returns a complex 2dArray
-aka, it does not return an array that can be shown as an image
-using the np.angle function turns the complex array into a real one but it looks like either 
-something is happening to the original img (not the file but the variable) or the angle are 
-exploding and the grayscalling has a relative implementation and is exploding because of it
-'''
-grd = np.angle(canny.MyCanny(img))
+
+grd = canny.MyCanny(img)
 
 dst = np.hstack((img,grd))
 
