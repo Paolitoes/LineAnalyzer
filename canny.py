@@ -7,7 +7,7 @@ def MyCanny(img: np.array):
                        [ -3+3j,0+10j,+3 +3j]])
     grad2d = signal.convolve2d(img,scharr,boundary="symm",mode='same')
 
-    gradI  = np.arctan2(np.imag(grad2d),np.real(grad2d))
+    gradI  = 255*(np.arctan2(np.imag(grad2d),np.real(grad2d))/(np.pi/2))
 
     return gradI
     
