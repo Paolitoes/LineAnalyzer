@@ -10,14 +10,14 @@ if img is None:
 
 #dst = cv.addWeighted(img,0.7,img,0.3,0)
 
-lines = canny.MyCanny(img)
-oficline = cv.Canny(img,100,200)
+edges = cv.Canny(img,100,200)
+ret, dots = cv.threshold(img,127,255,cv.THRESH_BINARY)
 
-cv.imshow("Display window", lines)
-cv.imshow("Second window", img)
-cv.imshow("Third window",oficline)
+cv.imshow("Display window", img)
+cv.imshow("Edges",edges)
+cv.imshow("Dots",dots)
 
 k = cv.waitKey(0)
 
 if k ==ord("s"):
-    cv.imwrite("lines.png",oficline)
+    cv.imwrite("edges.png",edges)
