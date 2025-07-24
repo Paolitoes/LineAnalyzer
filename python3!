@@ -1,0 +1,7 @@
+import numpy as np
+
+img = np.array([[1,2,3],
+               [4,5,6]])
+print(img.shape)
+print(type(img.shape))
+img2 = np.ndarray(img.shape+(3,),dtype=int32)

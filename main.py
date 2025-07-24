@@ -19,13 +19,13 @@ def dotdetect(img1):
 edges = cv.Canny(img,100,200)
 dots = dotdetect(img)
 ret, thrImg = thresh(img)
-erosion = cv.erode(255-thrImg,np.ones((5,5),np.int8))
+erosion = cv.erode(255-thrImg,np.ones((4,4),np.int8))
 
 cv.rectangle(img,(0,0),(7,7),0)
 
 cv.imshow("Display window", img)
-cv.imshow("Edges",edges)
-cv.imshow("Dots",dots)
+# cv.imshow("Edges",edges)
+# cv.imshow("Dots",dots)
 cv.imshow("Erosion",erosion)
 
 k = cv.waitKey(0)
