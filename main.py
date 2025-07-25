@@ -3,21 +3,33 @@ import cv2 as cv
 import sys
 import canny
 
-img = cv.imread("Ghost1.png",cv.IMREAD_GRAYSCALE)
+ImagePath = "Ghost1.png"
 
-if img is None:
+imgC = cv.imread(ImagePath)
+imgG = cv.imread(ImagePath,cv.IMREAD_GRAYSCALE)
+
+if imgC is None or imgG is None:
     sys.exit("Could not read the image.")
 
 def thresh(x):
-    _, thr = cv.threshold(x,127,255,cv.THRESH_BINARY)
+    _, thr = cv.threshold(x,100,255,cv.THRESH_BINARY)
     return thr
 
-fin = np.zeros(img.shape+(3,))
-fin[:,:,0] = thresh(img)
-fin[:,:,1] = cv.Canny(img,100,200)
+dots = thresh(imgG)
 
-cv.imshow("Overlay Window",fin)
+r,c=np.nonzero(dots>0)
+print(r)
+print(r.size)
+print(c)
+print(c.size)
 
+for p in zip(r,c):
+    cv.circle(imgC,p,5,(255,0,0))
+
+cv.imshow("Overlay Window",imgC)
+cv.imshow("gray",imgG)
+cv.imshow("thr",dots)
+#imgC is showing up as 3/4th blue, I'm blaming the circle drawing
 
 '''
 def dotdetect(img1):
